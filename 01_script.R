@@ -1,3 +1,4 @@
+#ciao
 setwd('C:/Users/m.galvani/Desktop/RIDS/Terrorism/Script')
 rm(list=ls())
 library(lubridate)
