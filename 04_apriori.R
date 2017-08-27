@@ -4,8 +4,8 @@ rm(list=ls())
 source("./function.R")
 
 
-load('./../dati/data_cluster_europe.RData')
-#load('./../dati/data_gower_cluster.RData')
+load('./Rome/dati/data_cluster_europe.RData')
+#load('./Rome/dati/data_gower_cluster.RData')
 
 dataset <- data
 dataset$event_det <- paste0(dataset$targtype1_txt,'-',dataset$attacktype1_txt)
@@ -223,7 +223,7 @@ colnames(attacks) <- gsub('X','',colnames(attacks))
 save1 <- data.frame(attacks, freq=save$support)
 save1 <- save1[order(save1$freq, decreasing = T),]
 
-write.csv(save1, file='./../dati/sequential_arules.csv')
+write.csv(save1, file='./Rome/dati/sequential_arules.csv')
 
 save1$freq <- round(save1$freq*100)
 orders <- save1[rep(row.names(save1), save1$freq), 1:10]

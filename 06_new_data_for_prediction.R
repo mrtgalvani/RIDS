@@ -12,11 +12,11 @@ library(ff)
 library(ROCR)
 #library(xts)
 
-source("./function.R")
-source("forecast.R")  
+source("./Rome//function.R")
+source("./Rome/forecast.R")  
 
-#load('./../dati/data.RData')
-load('./../dati/data_cluster_europe.RData')
+#load('./Rome/dati/data.RData')
+load('./Rome/dati/data_cluster_europe.RData')
 
 #data <- data[data$region_txt=='Europe - Western Europe',]
 
@@ -104,7 +104,7 @@ summary(factor(month$flg_next_attack))
 # 
 # ### mancano ICELAND e MALTA
 # ###################################################
-p4v2015 <- read.csv('./../dati/p4v2015.csv', sep=';')
+p4v2015 <- read.csv('./Rome/dati/p4v2015.csv', sep=';')
 
 p4v2015$country <- tolower(p4v2015$country)
 p4v2015$xrreg[p4v2015$xrreg==1] <- 'UNREGULATED'
@@ -149,7 +149,7 @@ month <- merge(month,
 # mancano iceland e malta
 
 ####################################################
-SFIv2015 <- read.csv('./../dati/SFIv2015.csv', sep=';')
+SFIv2015 <- read.csv('./Rome/dati/SFIv2015.csv', sep=';')
 
 SFIv2015$country <- tolower(SFIv2015$country)
 
@@ -558,7 +558,7 @@ month$prob <- (month$pred_rf_prob$si+month$pred_knn_prob$si+month$pred_lr_prob$s
 
 state <- month[month$timestamp>=as.POSIXct('2015-12-26'),]
 
-country <- read.csv('./../dati/countrycodes.csv', sep=';')
+country <- read.csv('./Rome/dati/countrycodes.csv', sep=';')
 country$Country..en. <- tolower(country$Country..en.)
 
 state <- merge(state,country[c('Country..en.','ISO.3166.1.alpha3','ISO.3166.1.alpha2')],by.x='country',by.y='Country..en.')

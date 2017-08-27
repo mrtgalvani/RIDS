@@ -6,7 +6,7 @@ library(ggplot2)
 library(plotly)
 library(htmlwidgets)
 
-load('./../dati/data.RData')
+load('./Rome/dati/data.RData')
 
 #### focus on Europe
 
@@ -110,9 +110,9 @@ cl_12 <- data[data$cluster=='46',]
 summary(factor(cl_12$country_txt))
 summary(factor(cl_12$region_txt))
 
-save(data, file='./../dati/data_cluster.RData')
+save(data, file='./Rome/dati/data_cluster.RData')
 
-save(data, file='./../dati/data_cluster_europe.RData')
+save(data, file='./Rome/dati/data_cluster_europe.RData')
 
 count_event <- data.frame(table(data$timestamp,data$cluster))
 

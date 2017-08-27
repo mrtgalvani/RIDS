@@ -4,7 +4,7 @@ rm(list=ls())
 source("./function.R")
 
 
-load('./../dati/data_cluster_europe.RData')
+load('./Rome/dati/data_cluster_europe.RData')
 #load('./../dati/data_gower_cluster.RData')
 
 dataset <- data

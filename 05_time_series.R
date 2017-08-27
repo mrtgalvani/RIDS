@@ -1,12 +1,12 @@
 setwd('C:/Users/m.galvani/Desktop/RIDS/Terrorism/Script')
 rm(list=ls())
 
-source("./function.R")
-source("forecast.R")  
+source("./Rome/function.R")
+source("./Rome/forecast.R")  
 
 library(forecast)
 
-load('./../dati/data_cluster_europe.RData')
+load('./Rome/dati/data_cluster_europe.RData')
 
 data <- data[data$region_txt=='Europe - Western Europe',]
 #data <- data[data$cluster==4,]

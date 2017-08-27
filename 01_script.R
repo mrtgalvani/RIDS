@@ -6,7 +6,7 @@ library(ggplot2)
 library(plotly)
 library(htmlwidgets)
 
-data <- read.csv("./../dati/data.csv",
+data <- read.csv("./Rome/dati/data.csv",
                  header=T, sep = ";", na.strings = "NULL",stringsAsFactors = F)
 
 data[data==''] <- NA
@@ -34,11 +34,11 @@ data <- subset(data, select =c('eventid','timestamp','country_txt','region_txt',
 data$continent <- unlist(sapply(data$region_txt,function(x){if(grepl('Europe',x)){'Europe'} else if(grepl('Asia',x)){'Asia'} else if(grepl('Africa',x)){'Africa'} else if(grepl('America',x)){'America'} else{'Oceania'}}))
 data$region_txt <- paste0(data$continent,' - ',data$region_txt)
 
-save(data, file='./../dati/data.RData')
+save(data, file='./Rome/dati/data.RData')
 ##########################################################################?
 ######### serie temporale per continente e numero di eventi ################
 #########################################################################
-#load('./../dati/data_cluster_europe.RData')
+#load('./Rome/dati/data_cluster_europe.RData')
 #data <- data[data$country_txt=='Italy',]
 count_event <- data.frame(table(data$timestamp,data$continent))
 
@@ -333,7 +333,7 @@ data$nkill <- as.numeric(data$nkill)
 data$city[data$city=='Unknown'] <- NA
 data$country_txt[data$country_txt=='Unknown'] <- NA
 
-country <- read.csv("./../dati/country.csv",
+country <- read.csv("./Rome/dati/country.csv",
                     header=T, sep = ";", na.strings = "NULL",stringsAsFactors = F)
 country$latitude1 <- as.numeric(unlist(sapply(country$latitude,function(x) if(substr(x, nchar(x)-3,nchar(x)-3)=='.'){paste(unlist(strsplit(x,''))[-gregexpr('\\.',x)[[1]][2]],sep='', collapse = "")} else{x})))
 country$longitude1 <- as.numeric(unlist(sapply(country$longitude,function(x) if(substr(x, nchar(x)-3,nchar(x)-3)=='.'){paste(unlist(strsplit(x,''))[-gregexpr('\\.',x)[[1]][2]],sep='', collapse = "")} else{x})))
@@ -362,7 +362,7 @@ data$latitude[data$country=='Ivory Coast'] <- 7.5400
 data$longitude[data$country=='Ivory Coast'] <- 5.5471
 
 
-save(data, file='./../dati/data.RData')
+save(data, file='./Rome/dati/data.RData')
 
 library(ggmap)
 map <- get_map(location = 'Europe', zoom = 3)

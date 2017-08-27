@@ -6,7 +6,7 @@ library(ggplot2)
 library(plotly)
 library(htmlwidgets)
 
-load('./../dati/data.RData')
+load('./Rome/dati/data.RData')
 
 data <- data[data$continent=='Europe',]
 data <- data[data$country_txt=='Italy',]
@@ -82,7 +82,7 @@ summary(factor(grp))
 
 dataset$CLUSTER <- as.factor(grp)
 
-save(dataset, file='./../dati/dataset_gower_cluster.RData')
+save(dataset, file='./Rome/dati/dataset_gower_cluster.RData')
 
 #### GRAFICI ####
 
